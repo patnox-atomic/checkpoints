@@ -1,9 +1,11 @@
 # checkpoints
-A Django application with an API endpoint that accepts a string of comma separated points for example “(2,3), (1,1), (5, 4), ...” and calculates the closest points. It then stores them in a table with the following details: 
+=============
+A python Django application with an API endpoint that accepts a string of comma separated points for example “(2,3), (1,1), (5, 4), ...” and calculates the closest points. It then stores them in a table with the following details: 
 -The string of points submitted 
 -The result of the computation: the closest points pair.
 
-API:
+#API:
+====
 
 The following main URLs are now available:
 
@@ -12,9 +14,10 @@ The following main URLs are now available:
     GET /checkpoints/:id — gets one query using its id
     GET /admin/ - app admin
     
-Examples
+#Examples
+========
 
-1: GET /checkpoints/
+#1: GET /checkpoints/
 
 	GET query: Empty Body
 	
@@ -52,7 +55,7 @@ Examples
 		]
 	}
 	
-2: GET /checkpoints/:id
+#2: GET /checkpoints/:id
 
 	GET query: Empty Body
 
@@ -70,7 +73,7 @@ Examples
 	    }
 	}
 
-3: POST /checkpoints/
+#3: POST /checkpoints/
 
 	POST query:
 		{
@@ -98,10 +101,15 @@ Examples
 	
 NB: A postman collections file is included for testing	
 
-How to Run:
+#How to Run:
 ===========
 
-
+1: Modify settings.py and set DB parameters
+2: pip install -r requirements.txt
+3: Run Migrate: python manage.py migrate
+4: Run Server: python manage.py runserver
+5: goto http://127.0.0.1:8000/admin for Admin
+6: Test the api on postman - URL: http://127.0.0.1:8000/checkpoints/
 
 	
 	

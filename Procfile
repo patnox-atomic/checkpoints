@@ -1,4 +1,4 @@
-web: gunicorn interview.wsgi
+web: gunicorn interview.wsgi --log-file -
 
 
 

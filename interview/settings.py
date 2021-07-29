@@ -1,9 +1,13 @@
 ##Patnox 27-07-2021
 
 from pathlib import Path
+import os
+import django_heroku
+import whitenoise
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+#### BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -14,17 +18,18 @@ SECRET_KEY = "Qg.8h%5717.{zti3s[ZdaD+[n,=_h@}zH[O]EY<[)p#c/i92aRS+,3M[~3^Z'Q2"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 ##Debug mode
-##DEBUG = True
-DEBUG = False
+DEBUG = True
+## DEBUG = False
 
 ##Debug mode
-##ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+ALLOWED_HOSTS = []
+## ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'checkpoints.apps.CheckpointsConfig',
     'rest_framework',
     'django.contrib.admin',
@@ -37,9 +42,11 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -110,12 +117,27 @@ USE_TZ = True
 
 APPEND_SLASH=True
 
+WHITENOISE_USE_FINDERS = True
+
+#### STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = 'static/'
+#### STATIC_URL = 'static/'
+#### STATIC_ROOT = 'static/'
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-auto-field

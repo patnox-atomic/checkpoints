@@ -11,7 +11,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/checkpoints/",
+					"raw": "https://mfsafricatest.herokuapp.com/checkpoints/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -34,7 +34,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/checkpoints/1/",
+					"raw": "https://mfsafricatest.herokuapp.com/checkpoints/1/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -68,7 +68,7 @@
 					"raw": "{\n  \"data\": {\n    \"type\": \"CheckedPoints\",\n    \"attributes\": {\n        \"query\": \"[(1, 1), (-1, -1), (3, 4), (6, 1), (-1, -6), (-4, -3)]\"\n    }\n  }\n}\n"
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/checkpoints/",
+					"raw": "https://mfsafricatest.herokuapp.com/checkpoints/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -101,7 +101,7 @@
 					"raw": "{\n  \"data\": {\n    \"type\": \"CheckedPoints\",\n    \"attributes\": {\n        \"query\": \"[(2,a),(2,2)]\"\n    }\n  }\n}\n"
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/checkpoints/",
+					"raw": "https://mfsafricatest.herokuapp.com/checkpoints/",
 					"protocol": "http",
 					"host": [
 						"127",
